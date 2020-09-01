@@ -1,0 +1,24 @@
+## @file
+# Provides bootloader payload module related package definitions.
+#
+# Copyright (c) 2020, Intel Corporation. All rights reserved.<BR>
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = PayloadModPkg
+  PACKAGE_GUID                   = 761891DA-8E91-4034-BFA4-054351289568
+  PACKAGE_VERSION                = 0.1
+
+[Includes]
+
+
+[Guids]
+
+
+[PcdsFixedAtBuild]
+
+
+[PcdsFeatureFlag]

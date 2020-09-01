@@ -1,0 +1,264 @@
+## @file
+#  Copyright (c) 2020, Intel Corporation. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = MicroPython
+  FILE_GUID                      = DDFC7348-FD07-4E41-B744-F7E133B07BF2
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  DEFINE MICROPYTHON_PATH        = MicroPython
+  DEFINE EXTRA_PATH              = Extra
+
+[Sources.IA32]
+	$(EXTRA_PATH)/Ia32/nlrsetjmp.nasm
+
+[Sources]
+	Include\assert.h
+	Include\errno.h
+	Include\limits.h
+	Include\setjmp.h
+	Include\stdarg.h
+	Include\stdbool.h
+	Include\stddef.h
+	Include\stdint.h
+	Include\stdio.h
+	Include\stdlib.h
+	Include\string.h
+	Include\unistd.h
+	$(EXTRA_PATH)\mphalport.h
+	$(EXTRA_PATH)\sblservice.h
+	$(MICROPYTHON_PATH)\extmod\machine_mem.h
+	$(MICROPYTHON_PATH)\extmod\misc.h
+	$(MICROPYTHON_PATH)\extmod\utime_mphal.h
+	$(MICROPYTHON_PATH)\extmod\virtpin.h
+	#$(MICROPYTHON_PATH)\genhdr\moduledefs.h
+	#$(MICROPYTHON_PATH)\genhdr\mpversion.h
+	#$(MICROPYTHON_PATH)\genhdr\qstrdefs.generated.h
+	$(MICROPYTHON_PATH)\lib\mp-readline\readline.h
+	$(MICROPYTHON_PATH)\lib\timeutils\timeutils.h
+	$(MICROPYTHON_PATH)\lib\utils\pyexec.h
+	$(MICROPYTHON_PATH)\py\asmarm.h
+	$(MICROPYTHON_PATH)\py\asmbase.h
+	$(MICROPYTHON_PATH)\py\asmthumb.h
+	$(MICROPYTHON_PATH)\py\asmx64.h
+	$(MICROPYTHON_PATH)\py\asmx86.h
+	$(MICROPYTHON_PATH)\py\asmxtensa.h
+	$(MICROPYTHON_PATH)\py\bc.h
+	$(MICROPYTHON_PATH)\py\bc0.h
+	$(MICROPYTHON_PATH)\py\binary.h
+	$(MICROPYTHON_PATH)\py\builtin.h
+	$(MICROPYTHON_PATH)\py\compile.h
+	$(MICROPYTHON_PATH)\py\emit.h
+	$(MICROPYTHON_PATH)\py\emitglue.h
+	$(MICROPYTHON_PATH)\py\formatfloat.h
+	$(MICROPYTHON_PATH)\py\frozenmod.h
+	$(MICROPYTHON_PATH)\py\gc.h
+	$(MICROPYTHON_PATH)\py\grammar.h
+	$(MICROPYTHON_PATH)\py\lexer.h
+	$(MICROPYTHON_PATH)\py\misc.h
+	$(MICROPYTHON_PATH)\py\mpconfig.h
+	$(MICROPYTHON_PATH)\py\mperrno.h
+	$(MICROPYTHON_PATH)\py\mphal.h
+	$(MICROPYTHON_PATH)\py\mpprint.h
+	$(MICROPYTHON_PATH)\py\mpstate.h
+	$(MICROPYTHON_PATH)\py\mpthread.h
+	$(MICROPYTHON_PATH)\py\mpz.h
+	$(MICROPYTHON_PATH)\py\nativeglue.h
+	$(MICROPYTHON_PATH)\py\nlr.h
+	$(MICROPYTHON_PATH)\py\obj.h
+	$(MICROPYTHON_PATH)\py\objarray.h
+	$(MICROPYTHON_PATH)\py\objexcept.h
+	$(MICROPYTHON_PATH)\py\objfun.h
+	$(MICROPYTHON_PATH)\py\objgenerator.h
+	$(MICROPYTHON_PATH)\py\objint.h
+	$(MICROPYTHON_PATH)\py\objlist.h
+	$(MICROPYTHON_PATH)\py\objmodule.h
+	$(MICROPYTHON_PATH)\py\objnamedtuple.h
+	$(MICROPYTHON_PATH)\py\objstr.h
+	$(MICROPYTHON_PATH)\py\objstringio.h
+	$(MICROPYTHON_PATH)\py\objtuple.h
+	$(MICROPYTHON_PATH)\py\objtype.h
+	$(MICROPYTHON_PATH)\py\pairheap.h
+	$(MICROPYTHON_PATH)\py\parse.h
+	$(MICROPYTHON_PATH)\py\parsenum.h
+	$(MICROPYTHON_PATH)\py\parsenumbase.h
+	$(MICROPYTHON_PATH)\py\persistentcode.h
+	$(MICROPYTHON_PATH)\py\profile.h
+	$(MICROPYTHON_PATH)\py\pystack.h
+	$(MICROPYTHON_PATH)\py\qstr.h
+	$(MICROPYTHON_PATH)\py\reader.h
+	$(MICROPYTHON_PATH)\py\repl.h
+	$(MICROPYTHON_PATH)\py\ringbuf.h
+	$(MICROPYTHON_PATH)\py\runtime.h
+	$(MICROPYTHON_PATH)\py\runtime0.h
+	$(MICROPYTHON_PATH)\py\scope.h
+	$(MICROPYTHON_PATH)\py\smallint.h
+	$(MICROPYTHON_PATH)\py\stackctrl.h
+	$(MICROPYTHON_PATH)\py\stream.h
+	$(MICROPYTHON_PATH)\py\unicode.h
+	$(MICROPYTHON_PATH)\py\vmentrytable.h
+
+  Include/UefiCdefs.h
+  MicroPython.h
+  MicroPython.c
+  $(EXTRA_PATH)/mpconfigport.h
+  $(EXTRA_PATH)/main.c
+  $(EXTRA_PATH)/nlr.c
+  $(EXTRA_PATH)/string.c
+  $(EXTRA_PATH)/gccollect.c
+  $(EXTRA_PATH)/mphalport.c
+  $(EXTRA_PATH)/modutime.c
+  $(EXTRA_PATH)/modpyb.c
+  $(MICROPYTHON_PATH)/README.md
+  $(MICROPYTHON_PATH)/py/mpstate.c
+	$(MICROPYTHON_PATH)/py/malloc.c
+	$(MICROPYTHON_PATH)/py/gc.c
+	$(MICROPYTHON_PATH)/py/pystack.c
+	$(MICROPYTHON_PATH)/py/qstr.c
+	$(MICROPYTHON_PATH)/py/vstr.c
+	$(MICROPYTHON_PATH)/py/mpprint.c
+	$(MICROPYTHON_PATH)/py/unicode.c
+	$(MICROPYTHON_PATH)/py/mpz.c
+	$(MICROPYTHON_PATH)/py/reader.c
+	$(MICROPYTHON_PATH)/py/lexer.c
+	$(MICROPYTHON_PATH)/py/parse.c
+	$(MICROPYTHON_PATH)/py/scope.c
+	$(MICROPYTHON_PATH)/py/compile.c
+	$(MICROPYTHON_PATH)/py/emitcommon.c
+	$(MICROPYTHON_PATH)/py/emitbc.c
+	$(MICROPYTHON_PATH)/py/asmbase.c
+	$(MICROPYTHON_PATH)/py/asmx64.c
+	$(MICROPYTHON_PATH)/py/emitnx64.c
+	$(MICROPYTHON_PATH)/py/asmx86.c
+	$(MICROPYTHON_PATH)/py/emitnx86.c
+	$(MICROPYTHON_PATH)/py/asmthumb.c
+	$(MICROPYTHON_PATH)/py/emitnthumb.c
+	$(MICROPYTHON_PATH)/py/emitinlinethumb.c
+	$(MICROPYTHON_PATH)/py/asmarm.c
+	$(MICROPYTHON_PATH)/py/emitnarm.c
+	$(MICROPYTHON_PATH)/py/frozenmod.c
+	$(MICROPYTHON_PATH)/py/asmxtensa.c
+	$(MICROPYTHON_PATH)/py/emitnxtensa.c
+	$(MICROPYTHON_PATH)/py/emitinlinextensa.c
+	$(MICROPYTHON_PATH)/py/emitnxtensawin.c
+	$(MICROPYTHON_PATH)/py/formatfloat.c
+	$(MICROPYTHON_PATH)/py/parsenumbase.c
+	$(MICROPYTHON_PATH)/py/parsenum.c
+	$(MICROPYTHON_PATH)/py/emitglue.c
+	$(MICROPYTHON_PATH)/py/persistentcode.c
+	$(MICROPYTHON_PATH)/py/runtime.c
+	$(MICROPYTHON_PATH)/py/runtime_utils.c
+	$(MICROPYTHON_PATH)/py/scheduler.c
+	$(MICROPYTHON_PATH)/py/nativeglue.c
+	$(MICROPYTHON_PATH)/py/pairheap.c
+	$(MICROPYTHON_PATH)/py/ringbuf.c
+	$(MICROPYTHON_PATH)/py/stackctrl.c
+	$(MICROPYTHON_PATH)/py/argcheck.c
+	$(MICROPYTHON_PATH)/py/warning.c
+	$(MICROPYTHON_PATH)/py/profile.c
+	$(MICROPYTHON_PATH)/py/map.c
+	$(MICROPYTHON_PATH)/py/obj.c
+	$(MICROPYTHON_PATH)/py/objarray.c
+	$(MICROPYTHON_PATH)/py/objattrtuple.c
+	$(MICROPYTHON_PATH)/py/objbool.c
+	$(MICROPYTHON_PATH)/py/objboundmeth.c
+	$(MICROPYTHON_PATH)/py/objcell.c
+	$(MICROPYTHON_PATH)/py/objclosure.c
+	$(MICROPYTHON_PATH)/py/objcomplex.c
+	$(MICROPYTHON_PATH)/py/objdeque.c
+	$(MICROPYTHON_PATH)/py/objdict.c
+	$(MICROPYTHON_PATH)/py/objenumerate.c
+	$(MICROPYTHON_PATH)/py/objexcept.c
+	$(MICROPYTHON_PATH)/py/objfilter.c
+	$(MICROPYTHON_PATH)/py/objfloat.c
+	$(MICROPYTHON_PATH)/py/objfun.c
+	$(MICROPYTHON_PATH)/py/objgenerator.c
+	$(MICROPYTHON_PATH)/py/objgetitemiter.c
+	$(MICROPYTHON_PATH)/py/objint.c
+	$(MICROPYTHON_PATH)/py/objint_longlong.c
+	$(MICROPYTHON_PATH)/py/objint_mpz.c
+	$(MICROPYTHON_PATH)/py/objlist.c
+	$(MICROPYTHON_PATH)/py/objmap.c
+	$(MICROPYTHON_PATH)/py/objmodule.c
+	$(MICROPYTHON_PATH)/py/objobject.c
+	$(MICROPYTHON_PATH)/py/objpolyiter.c
+	$(MICROPYTHON_PATH)/py/objproperty.c
+	$(MICROPYTHON_PATH)/py/objnone.c
+	$(MICROPYTHON_PATH)/py/objnamedtuple.c
+	$(MICROPYTHON_PATH)/py/objrange.c
+	$(MICROPYTHON_PATH)/py/objreversed.c
+	$(MICROPYTHON_PATH)/py/objset.c
+	$(MICROPYTHON_PATH)/py/objsingleton.c
+	$(MICROPYTHON_PATH)/py/objslice.c
+	$(MICROPYTHON_PATH)/py/objstr.c
+	$(MICROPYTHON_PATH)/py/objstrunicode.c
+	$(MICROPYTHON_PATH)/py/objstringio.c
+	$(MICROPYTHON_PATH)/py/objtuple.c
+	$(MICROPYTHON_PATH)/py/objtype.c
+	$(MICROPYTHON_PATH)/py/objzip.c
+	$(MICROPYTHON_PATH)/py/opmethods.c
+	$(MICROPYTHON_PATH)/py/sequence.c
+	$(MICROPYTHON_PATH)/py/stream.c
+	$(MICROPYTHON_PATH)/py/binary.c
+	$(MICROPYTHON_PATH)/py/builtinimport.c
+	$(MICROPYTHON_PATH)/py/builtinevex.c
+	$(MICROPYTHON_PATH)/py/builtinhelp.c
+	$(MICROPYTHON_PATH)/py/modarray.c
+	$(MICROPYTHON_PATH)/py/modbuiltins.c
+	$(MICROPYTHON_PATH)/py/modcollections.c
+	$(MICROPYTHON_PATH)/py/modgc.c
+	$(MICROPYTHON_PATH)/py/modio.c
+	$(MICROPYTHON_PATH)/py/modmath.c
+	$(MICROPYTHON_PATH)/py/modcmath.c
+	$(MICROPYTHON_PATH)/py/modmicropython.c
+	$(MICROPYTHON_PATH)/py/modstruct.c
+	$(MICROPYTHON_PATH)/py/modsys.c
+	$(MICROPYTHON_PATH)/py/moduerrno.c
+	$(MICROPYTHON_PATH)/py/modthread.c
+	$(MICROPYTHON_PATH)/py/vm.c
+	$(MICROPYTHON_PATH)/py/bc.c
+	$(MICROPYTHON_PATH)/py/showbc.c
+	$(MICROPYTHON_PATH)/py/repl.c
+	$(MICROPYTHON_PATH)/py/smallint.c
+	$(MICROPYTHON_PATH)/py/frozenmod.c
+	$(MICROPYTHON_PATH)/lib/utils/printf.c
+	$(MICROPYTHON_PATH)/lib/timeutils/timeutils.c
+	$(MICROPYTHON_PATH)/lib/utils/sys_stdio_mphal.c
+	$(MICROPYTHON_PATH)/lib/utils/stdout_helpers.c
+	$(MICROPYTHON_PATH)/lib/utils/pyexec.c
+	$(MICROPYTHON_PATH)/lib/mp-readline/readline.c
+	$(MICROPYTHON_PATH)/lib/utils/interrupt_char.c
+	$(MICROPYTHON_PATH)/extmod/utime_mphal.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  BootloaderCommonPkg/BootloaderCommonPkg.dec
+  PayloadPkg/PayloadPkg.dec
+  PayloadModPkg/PayloadModPkg.dec
+
+[LibraryClasses]
+  BaseLib
+  BaseMemoryLib
+  ModuleEntryLib
+  DebugLib
+  PcdLib
+
+[Guids]
+
+[Pcd]
+
+
+[Depex]
+  TRUE
+
+[BuildOptions]
+  MSFT:*_*_*_CC_FLAGS = /GL- /wd4244 /wd4267 /wd4152 /wd4204 /wd4146 /wd4389 /wd4132 /wd4221 /wd4245 /wd4090 /wd4715 /wd4706 /wd4702 /wd4716 /wd4116 /wd4005 /wd4702 /wd4716 /wd4116
+  GCC:*_*_*_CC_FLAGS = -Wno-attributes -Wno-builtin-declaration-mismatch -Wp,-w
+
+
