@@ -1,6 +1,6 @@
 ## @ GenCfgData.py
 #
-# Copyright (c) 2020, Intel Corporation. All rights reserved.<BR>
+# Copyright (c) 2020 - 2021, Intel Corporation. All rights reserved.<BR>
 # SPDX-License-Identifier: BSD-2-Clause-Patent
 #
 ##
@@ -15,15 +15,18 @@ import subprocess
 # added new QSTRs and/or upgraded MicroPython, to reflect the correct QDEF()
 # definitions for fixed strings or version strings.
 #
-
 sys.dont_write_bytecode = True
-sys.path.append (os.path.join(os.path.dirname(__file__), '..', '..', '..'))
-from BuildLoader import prep_env, run_process
+sbl_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+sys.path.append (sbl_dir)
+from BuildLoader import prep_env, verify_toolchains, run_process
 
-arch = 'x86'
-
-curr_dir = os.path.dirname(os.path.realpath(__file__))
+arch     = 'x86'
+curr_dir = os.path.dirname(os.path.abspath(__file__))
+os.environ['SBL_SOURCE'] = sbl_dir
+if 'WORKSPACE' not in os.environ:
+    os.environ['WORKSPACE'] = os.environ['SBL_SOURCE']
 prep_env()
+verify_toolchains('')
 os.chdir(curr_dir)
 
 # create genhdr dir
