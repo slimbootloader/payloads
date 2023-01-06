@@ -50,3 +50,4 @@ Steps to Integrate MicroPython
 - Start a telnet console using Putty telnet 127.0.0.1 port 8888 to connect to QEMU \
   Make sure the console screen is set to 100 x 30 with Linux keypad for terminal keyboard.
 
+
