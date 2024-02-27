@@ -1,5 +1,5 @@
 Slim Bootloader Payloads
-=========================
+========================
 
 **Welcome to the Slim Bootloader payloads project!**
 
