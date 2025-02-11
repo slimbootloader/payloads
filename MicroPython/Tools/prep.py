@@ -21,6 +21,9 @@ sys.path.append (sbl_dir)
 from BuildLoader import prep_env, verify_toolchains, run_process
 
 arch     = 'x86'
+if (len(sys.argv) > 1) and (sys.argv[1] in ['x64','X64']) :
+    arch = 'x64'
+
 curr_dir = os.path.dirname(os.path.abspath(__file__))
 os.environ['SBL_SOURCE'] = sbl_dir
 if 'WORKSPACE' not in os.environ:

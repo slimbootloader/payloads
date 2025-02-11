@@ -82,7 +82,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_0(pyb_getch_obj, pyb_getch);
 STATIC mp_obj_t pyb_load_file (mp_obj_t path) {
   RETURN_STATUS              status;
   VOID                       *image;
-  UINTN                      image_size;
+  UINT32                     image_size;
 
   image       = NULL;
   image_size  = 0;
