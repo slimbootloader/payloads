@@ -80,7 +80,7 @@ void mp_hal_delay_ms(mp_uint_t ms) {
   usleep((ms) * 1000);
 }
 
-void mp_hal_delay_us (uint32_t us)
+void mp_hal_delay_us (mp_uint_t us)
 {
 	usleep (us);
 }
