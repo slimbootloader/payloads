@@ -45,6 +45,11 @@ uint32_t setjmp(BASE_LIBRARY_JUMP_BUFFER *jump_buf)
   return SetJump (jump_buf);
 }
 
+void longjmp(BASE_LIBRARY_JUMP_BUFFER *jump_buf, UINTN value)
+{
+  LongJump (jump_buf, value);
+}
+
 void debug_assert (char *file_name, uint32_t line, char *msg)
 {
   sbl_service->DebugPrint (DEBUG_ERROR, "ASSERT %a(%d):%a\n", file_name, line, msg);
@@ -80,7 +85,7 @@ void mp_hal_delay_ms(mp_uint_t ms) {
   usleep((ms) * 1000);
 }
 
-void mp_hal_delay_us (uint32_t us)
+void mp_hal_delay_us (mp_uint_t us)
 {
 	usleep (us);
 }
