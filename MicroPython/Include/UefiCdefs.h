@@ -181,6 +181,7 @@ typedef BASE_LIBRARY_JUMP_BUFFER jmp_buf[1];
 //#define longjmp(env, val) LongJump(env, (UINTN)((val == 0) ? 1 : val))
 extern void     debug_assert (char *file_name, uint32_t line, char *msg);
 extern uint32_t setjmp(BASE_LIBRARY_JUMP_BUFFER *jump_buf);
+extern void     longjmp(BASE_LIBRARY_JUMP_BUFFER *jump_buf, UINTN val);
 
 
 ////////////////////////////////////////////////////////////////////////////////

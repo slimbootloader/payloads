@@ -15,8 +15,8 @@
   DEFINE MICROPYTHON_PATH        = MicroPython
   DEFINE EXTRA_PATH              = Extra
 
-[Sources.IA32]
-	$(EXTRA_PATH)/Ia32/nlrsetjmp.nasm
+
+
 
 [Sources]
 	Include\assert.h
@@ -109,7 +109,8 @@
   MicroPython.c
   $(EXTRA_PATH)/mpconfigport.h
   $(EXTRA_PATH)/main.c
-  $(EXTRA_PATH)/nlr.c
+  $(MICROPYTHON_PATH)/py/nlrsetjmp.c
+  $(MICROPYTHON_PATH)/py/nlr.c
   $(EXTRA_PATH)/string.c
   $(EXTRA_PATH)/gccollect.c
   $(EXTRA_PATH)/mphalport.c
@@ -258,7 +259,7 @@
   TRUE
 
 [BuildOptions]
-  MSFT:*_*_*_CC_FLAGS = /GL- /wd4244 /wd4267 /wd4152 /wd4204 /wd4146 /wd4389 /wd4132 /wd4221 /wd4245 /wd4090 /wd4715 /wd4706 /wd4702 /wd4716 /wd4116 /wd4005 /wd4702 /wd4716 /wd4116
+  MSFT:*_*_*_CC_FLAGS = /GL- /wd4244 /wd4267 /wd4152 /wd4204 /wd4146 /wd4389 /wd4132 /wd4221 /wd4245 /wd4090 /wd4715 /wd4706 /wd4702 /wd4716 /wd4116 /wd4005 /wd4702 /wd4716 /wd4116 /wd4310
   GCC:*_*_*_CC_FLAGS = -Wno-attributes -Wno-builtin-declaration-mismatch -Wp,-w
 
 
