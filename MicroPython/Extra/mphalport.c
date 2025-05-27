@@ -37,7 +37,7 @@
 #include "py/mphal.h"
 #include "py/lexer.h"
 #include "extmod/misc.h"
-#include "lib/utils/pyexec.h"
+#include "shared/runtime/pyexec.h"
 #include "sblservice.h"
 
 uint32_t setjmp(BASE_LIBRARY_JUMP_BUFFER *jump_buf)
@@ -111,10 +111,10 @@ mp_uint_t mp_hal_ticks_cpu (void)
 	return AsmReadTsc();
 }
 
-void mp_hal_stdout_tx_strn (const char *str, size_t len)
+mp_uint_t mp_hal_stdout_tx_strn (const char *str, size_t len)
 {
 	sbl_service->ConsoleWrite (str, len);
-	mp_uos_dupterm_tx_strn (str, len);
+	return mp_os_dupterm_tx_strn (str, len);
 }
 
 int mp_hal_stdin_rx_chr (void)

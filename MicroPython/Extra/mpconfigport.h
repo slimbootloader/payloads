@@ -59,7 +59,7 @@
 #define MICROPY_PY_BUILTINS_MIN_MAX (0)
 #define MICROPY_PY_BUILTINS_STR_COUNT (0)
 #define MICROPY_PY_BUILTINS_STR_OP_MODULO (1)
-#define MICROPY_PY_UTIME_MP_HAL     (1)
+#define MICROPY_PY_TIME             (1)
 #define MICROPY_PY___FILE__         (0)
 #define MICROPY_PY_GC               (0)
 #define MICROPY_PY_ARRAY            (0)
@@ -78,6 +78,8 @@
 #define MICROPY_LONGINT_IMPL        (MICROPY_LONGINT_IMPL_MPZ)
 #define MICROPY_ENABLE_SOURCE_LINE  (1)
 #define MICROPY_NLR_X86             (1)
+#define MICROPY_PY_MATH             (1)
+#define MICROPY_PY_BUILTINS_FLOAT   (1)
 
 #define MP_ENDIANNESS_LITTLE (1)
 
@@ -93,11 +95,11 @@ typedef uintptr_t mp_uint_t; // must be pointer size
 typedef long mp_off_t;
 
 // extra built in names to add to the global namespace
-extern const struct _mp_obj_module_t mp_module_utime;
+extern const struct _mp_obj_module_t mp_module_time;
 extern const struct _mp_obj_module_t pyb_module;
 
 #define MICROPY_PORT_BUILTINS \
-    { MP_ROM_QSTR(MP_QSTR_utime), MP_ROM_PTR(&mp_module_utime) }, \
+    { MP_ROM_QSTR(MP_QSTR_time),  MP_ROM_PTR(&mp_module_time) }, \
     { MP_ROM_QSTR(MP_QSTR_pyb),   MP_ROM_PTR(&pyb_module) }, \
 
 #define MICROPY_HW_BOARD_NAME "SBL"
@@ -107,3 +109,8 @@ extern const struct _mp_obj_module_t pyb_module;
 
 #define MICROPY_PORT_ROOT_POINTERS \
     const char *readline_hist[8];
+
+#ifdef _MSC_VER
+#define MP_NORETURN                 __declspec(noreturn)
+#define MP_NOINLINE                 __declspec(noinline)
+#endif

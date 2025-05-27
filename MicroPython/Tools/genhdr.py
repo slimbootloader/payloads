@@ -32,6 +32,56 @@ def preprocess(in_file, out_file, incs, option):
     cmd_list = PP_CMD + shlex.split(cmd, posix=False)
     subprocess.check_call(cmd_list)
 
+def collect_root_pointers(src, mpy_dir, root_pointer_dir):
+    python = "python"
+    script = os.path.join(mpy_dir, "py", "makeqstrdefs.py")
+    cmd = r"%s %s split root_pointer %s %s dummy" % (python, script, src, root_pointer_dir)
+    subprocess.check_call(shlex.split(cmd, posix=False))
+
+def cat_root_pointers(dst, mpy_dir, root_pointer_dir):
+    python = "python"
+    script = os.path.join(mpy_dir, "py", "makeqstrdefs.py")
+    cmd = r"%s %s cat root_pointer dummy %s %s" % (python, script, root_pointer_dir, dst)
+    subprocess.check_call(shlex.split(cmd, posix=False))
+
+    os.remove(dst + ".hash")
+    for file in os.listdir(root_pointer_dir):
+        os.remove(os.path.join(root_pointer_dir, file))
+
+def gen_root_pointers(root_pointer_file, collected_root_pointer, mpy_dir):
+    python = "python"
+    script = os.path.join(mpy_dir, "py", "make_root_pointers.py")
+    cmd = r"%s %s %s" % (python, script, collected_root_pointer)
+    result = subprocess.run(shlex.split(cmd, posix=False),capture_output=True)
+    with open(root_pointer_file, "wb+") as out_file:
+        out_file.write(result.stdout)
+    os.remove(root_pointer_file + ".tmp")
+
+def collect_modules(src, mpy_dir, module_dir):
+    python = "python"
+    script = os.path.join(mpy_dir, "py", "makeqstrdefs.py")
+    cmd = r"%s %s split module %s %s dummy" % (python, script, src, module_dir)
+    subprocess.check_call(shlex.split(cmd, posix=False))
+
+def cat_module(dst, mpy_dir, module_dir):
+    python = "python"
+    script = os.path.join(mpy_dir, "py", "makeqstrdefs.py")
+    cmd = r"%s %s cat module dummy %s %s" % (python, script, module_dir, dst)
+    subprocess.check_call(shlex.split(cmd, posix=False))
+
+    os.remove(dst + ".hash")
+    for file in os.listdir(module_dir):
+        os.remove(os.path.join(module_dir, file))
+
+def gen_module(module_file, collected_module, mpy_dir):
+    python = "python"
+    script = os.path.join(mpy_dir, "py", "makemoduledefs.py")
+    cmd = r"%s %s %s" % (python, script, collected_module)
+    result = subprocess.run(shlex.split(cmd, posix=False),capture_output=True)
+    with open(module_file, "wb+") as out_file:
+        out_file.write(result.stdout)
+    os.remove(module_file + ".tmp")
+
 def collect_qstr(src, mpy_dir, qstr_dir):
     python = "python"
     script = os.path.join(mpy_dir, "py", "makeqstrdefs.py")
@@ -52,6 +102,8 @@ def cat_qstr(dst, mpy_dir, qstr_dir):
         out_file.writelines(FORCED_QSTR)
     os.remove(dst + ".tmp")
     os.remove(dst + ".tmp.hash")
+    for file in os.listdir(qstr_dir):
+        os.remove(os.path.join(qstr_dir, file))
 
 def gen_qstr(qstr_file, collected_qstr, mpy_dir, qstr_dir, incs, option):
     qstr_pattern = re.compile(r"(Q\([^()]+\))", re.DOTALL | re.MULTILINE)
@@ -146,7 +198,7 @@ def main(args):
     pkg_files = []
     src_files = []
     inc_paths = [inf_path]
-    cc_options = ''
+    cc_options = '-DNO_QSTR'
 
     with open(args.inf_file, 'r') as fd:
         in_def_section = False
@@ -208,8 +260,14 @@ def main(args):
 
     mpy_dir = os.path.join(inf_path, "MicroPython")
     qstr_dir = os.path.join(inf_path, "MicroPython", "genhdr", "qstr")
+    root_pointer_dir = os.path.join(inf_path, "MicroPython", "genhdr", "root_pointer")
+    module_dir = os.path.join(inf_path, "MicroPython", "genhdr", "module")
     collected_qstr_file = os.path.join(inf_path, "MicroPython", "genhdr", "qstrdefs.collected.h")
+    collected_rp_file = os.path.join(inf_path, "MicroPython", "genhdr", "root_pointers.h.tmp")
+    collected_module_file = os.path.join(inf_path, "MicroPython", "genhdr", "moduledefs.h.tmp")
     qstr_file = os.path.join(inf_path, "MicroPython", "genhdr", "qstrdefs.generated.h")
+    module_file = os.path.join(inf_path, "MicroPython", "genhdr", "moduledefs.h")
+    root_pointer_file = os.path.join(inf_path, "MicroPython", "genhdr", "root_pointers.h")
 
     # prepare files or dirs
     gen_version(mpy_dir, os.path.join(inf_path, "MicroPython", "genhdr", "mpversion.h"))
@@ -224,10 +282,16 @@ def main(args):
         pp_file = src + ".i"
         preprocess (src, pp_file, inc_paths, cc_options)
         collect_qstr (pp_file, mpy_dir, qstr_dir)
+        collect_modules (pp_file, mpy_dir, module_dir)
+        collect_root_pointers(pp_file, mpy_dir, root_pointer_dir)
         os.remove(pp_file)
 
     cat_qstr(collected_qstr_file, mpy_dir, qstr_dir)
     gen_qstr(qstr_file, collected_qstr_file, mpy_dir, qstr_dir, inc_paths, cc_options)
+    cat_module(collected_module_file, mpy_dir, module_dir)
+    gen_module(module_file, collected_module_file, mpy_dir)
+    cat_root_pointers(collected_rp_file, mpy_dir, root_pointer_dir)
+    gen_root_pointers(root_pointer_file, collected_rp_file, mpy_dir)
 
 if __name__ == "__main__":
 

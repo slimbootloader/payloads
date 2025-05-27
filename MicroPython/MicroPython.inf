@@ -19,90 +19,87 @@
 
 
 [Sources]
-	Include\assert.h
-	Include\errno.h
-	Include\limits.h
-	Include\setjmp.h
-	Include\stdarg.h
-	Include\stdbool.h
-	Include\stddef.h
-	Include\stdint.h
-	Include\stdio.h
-	Include\stdlib.h
-	Include\string.h
-	Include\unistd.h
-	$(EXTRA_PATH)\mphalport.h
-	$(EXTRA_PATH)\sblservice.h
-	$(MICROPYTHON_PATH)\extmod\machine_mem.h
-	$(MICROPYTHON_PATH)\extmod\misc.h
-	$(MICROPYTHON_PATH)\extmod\utime_mphal.h
-	$(MICROPYTHON_PATH)\extmod\virtpin.h
-	#$(MICROPYTHON_PATH)\genhdr\moduledefs.h
-	#$(MICROPYTHON_PATH)\genhdr\mpversion.h
-	#$(MICROPYTHON_PATH)\genhdr\qstrdefs.generated.h
-	$(MICROPYTHON_PATH)\lib\mp-readline\readline.h
-	$(MICROPYTHON_PATH)\lib\timeutils\timeutils.h
-	$(MICROPYTHON_PATH)\lib\utils\pyexec.h
-	$(MICROPYTHON_PATH)\py\asmarm.h
-	$(MICROPYTHON_PATH)\py\asmbase.h
-	$(MICROPYTHON_PATH)\py\asmthumb.h
-	$(MICROPYTHON_PATH)\py\asmx64.h
-	$(MICROPYTHON_PATH)\py\asmx86.h
-	$(MICROPYTHON_PATH)\py\asmxtensa.h
-	$(MICROPYTHON_PATH)\py\bc.h
-	$(MICROPYTHON_PATH)\py\bc0.h
-	$(MICROPYTHON_PATH)\py\binary.h
-	$(MICROPYTHON_PATH)\py\builtin.h
-	$(MICROPYTHON_PATH)\py\compile.h
-	$(MICROPYTHON_PATH)\py\emit.h
-	$(MICROPYTHON_PATH)\py\emitglue.h
-	$(MICROPYTHON_PATH)\py\formatfloat.h
-	$(MICROPYTHON_PATH)\py\frozenmod.h
-	$(MICROPYTHON_PATH)\py\gc.h
-	$(MICROPYTHON_PATH)\py\grammar.h
-	$(MICROPYTHON_PATH)\py\lexer.h
-	$(MICROPYTHON_PATH)\py\misc.h
-	$(MICROPYTHON_PATH)\py\mpconfig.h
-	$(MICROPYTHON_PATH)\py\mperrno.h
-	$(MICROPYTHON_PATH)\py\mphal.h
-	$(MICROPYTHON_PATH)\py\mpprint.h
-	$(MICROPYTHON_PATH)\py\mpstate.h
-	$(MICROPYTHON_PATH)\py\mpthread.h
-	$(MICROPYTHON_PATH)\py\mpz.h
-	$(MICROPYTHON_PATH)\py\nativeglue.h
-	$(MICROPYTHON_PATH)\py\nlr.h
-	$(MICROPYTHON_PATH)\py\obj.h
-	$(MICROPYTHON_PATH)\py\objarray.h
-	$(MICROPYTHON_PATH)\py\objexcept.h
-	$(MICROPYTHON_PATH)\py\objfun.h
-	$(MICROPYTHON_PATH)\py\objgenerator.h
-	$(MICROPYTHON_PATH)\py\objint.h
-	$(MICROPYTHON_PATH)\py\objlist.h
-	$(MICROPYTHON_PATH)\py\objmodule.h
-	$(MICROPYTHON_PATH)\py\objnamedtuple.h
-	$(MICROPYTHON_PATH)\py\objstr.h
-	$(MICROPYTHON_PATH)\py\objstringio.h
-	$(MICROPYTHON_PATH)\py\objtuple.h
-	$(MICROPYTHON_PATH)\py\objtype.h
-	$(MICROPYTHON_PATH)\py\pairheap.h
-	$(MICROPYTHON_PATH)\py\parse.h
-	$(MICROPYTHON_PATH)\py\parsenum.h
-	$(MICROPYTHON_PATH)\py\parsenumbase.h
-	$(MICROPYTHON_PATH)\py\persistentcode.h
-	$(MICROPYTHON_PATH)\py\profile.h
-	$(MICROPYTHON_PATH)\py\pystack.h
-	$(MICROPYTHON_PATH)\py\qstr.h
-	$(MICROPYTHON_PATH)\py\reader.h
-	$(MICROPYTHON_PATH)\py\repl.h
-	$(MICROPYTHON_PATH)\py\ringbuf.h
-	$(MICROPYTHON_PATH)\py\runtime.h
-	$(MICROPYTHON_PATH)\py\runtime0.h
-	$(MICROPYTHON_PATH)\py\scope.h
-	$(MICROPYTHON_PATH)\py\smallint.h
-	$(MICROPYTHON_PATH)\py\stackctrl.h
-	$(MICROPYTHON_PATH)\py\stream.h
-	$(MICROPYTHON_PATH)\py\unicode.h
-	$(MICROPYTHON_PATH)\py\vmentrytable.h
+	Include/assert.h
+	Include/errno.h
+	Include/limits.h
+	Include/setjmp.h
+	Include/stdarg.h
+	Include/stdbool.h
+	Include/stddef.h
+	Include/stdint.h
+	Include/stdio.h
+	Include/stdlib.h
+	Include/string.h
+	Include/unistd.h
+	$(EXTRA_PATH)/mphalport.h
+	$(EXTRA_PATH)/sblservice.h
+	$(MICROPYTHON_PATH)/extmod/modmachine.h
+	$(MICROPYTHON_PATH)/extmod/misc.h
+	$(MICROPYTHON_PATH)/extmod/modtime.h
+	$(MICROPYTHON_PATH)/extmod/virtpin.h
+	$(MICROPYTHON_PATH)/shared/readline/readline.h
+	$(MICROPYTHON_PATH)/shared/timeutils/timeutils.h
+	$(MICROPYTHON_PATH)/shared/runtime/pyexec.h
+	$(MICROPYTHON_PATH)/py/asmarm.h
+	$(MICROPYTHON_PATH)/py/asmbase.h
+	$(MICROPYTHON_PATH)/py/asmthumb.h
+	$(MICROPYTHON_PATH)/py/asmx64.h
+	$(MICROPYTHON_PATH)/py/asmx86.h
+	$(MICROPYTHON_PATH)/py/asmxtensa.h
+	$(MICROPYTHON_PATH)/py/bc.h
+	$(MICROPYTHON_PATH)/py/bc0.h
+	$(MICROPYTHON_PATH)/py/binary.h
+	$(MICROPYTHON_PATH)/py/builtin.h
+	$(MICROPYTHON_PATH)/py/compile.h
+	$(MICROPYTHON_PATH)/py/emit.h
+	$(MICROPYTHON_PATH)/py/emitglue.h
+	$(MICROPYTHON_PATH)/py/formatfloat.h
+	$(MICROPYTHON_PATH)/py/frozenmod.h
+	$(MICROPYTHON_PATH)/py/gc.h
+	$(MICROPYTHON_PATH)/py/grammar.h
+	$(MICROPYTHON_PATH)/py/lexer.h
+	$(MICROPYTHON_PATH)/py/misc.h
+	$(MICROPYTHON_PATH)/py/mpconfig.h
+	$(MICROPYTHON_PATH)/py/mperrno.h
+	$(MICROPYTHON_PATH)/py/mphal.h
+	$(MICROPYTHON_PATH)/py/mpprint.h
+	$(MICROPYTHON_PATH)/py/mpstate.h
+	$(MICROPYTHON_PATH)/py/mpthread.h
+	$(MICROPYTHON_PATH)/py/mpz.h
+	$(MICROPYTHON_PATH)/py/nativeglue.h
+	$(MICROPYTHON_PATH)/py/nlr.h
+	$(MICROPYTHON_PATH)/py/obj.h
+	$(MICROPYTHON_PATH)/py/objarray.h
+	$(MICROPYTHON_PATH)/py/objexcept.h
+	$(MICROPYTHON_PATH)/py/objfun.h
+	$(MICROPYTHON_PATH)/py/objgenerator.h
+	$(MICROPYTHON_PATH)/py/objint.h
+	$(MICROPYTHON_PATH)/py/objlist.h
+	$(MICROPYTHON_PATH)/py/objmodule.h
+	$(MICROPYTHON_PATH)/py/objnamedtuple.h
+	$(MICROPYTHON_PATH)/py/objstr.h
+	$(MICROPYTHON_PATH)/py/objstringio.h
+	$(MICROPYTHON_PATH)/py/objtuple.h
+	$(MICROPYTHON_PATH)/py/objtype.h
+	$(MICROPYTHON_PATH)/py/pairheap.h
+	$(MICROPYTHON_PATH)/py/parse.h
+	$(MICROPYTHON_PATH)/py/parsenum.h
+	$(MICROPYTHON_PATH)/py/parsenumbase.h
+	$(MICROPYTHON_PATH)/py/persistentcode.h
+	$(MICROPYTHON_PATH)/py/profile.h
+	$(MICROPYTHON_PATH)/py/pystack.h
+	$(MICROPYTHON_PATH)/py/qstr.h
+	$(MICROPYTHON_PATH)/py/reader.h
+	$(MICROPYTHON_PATH)/py/repl.h
+	$(MICROPYTHON_PATH)/py/ringbuf.h
+	$(MICROPYTHON_PATH)/py/runtime.h
+	$(MICROPYTHON_PATH)/py/runtime0.h
+	$(MICROPYTHON_PATH)/py/scope.h
+	$(MICROPYTHON_PATH)/py/smallint.h
+	$(MICROPYTHON_PATH)/py/stackctrl.h
+	$(MICROPYTHON_PATH)/py/stream.h
+	$(MICROPYTHON_PATH)/py/unicode.h
+	$(MICROPYTHON_PATH)/py/vmentrytable.h
 
   Include/UefiCdefs.h
   MicroPython.h
@@ -114,7 +111,7 @@
   $(EXTRA_PATH)/string.c
   $(EXTRA_PATH)/gccollect.c
   $(EXTRA_PATH)/mphalport.c
-  $(EXTRA_PATH)/modutime.c
+  $(MICROPYTHON_PATH)/extmod/modtime.c
   $(EXTRA_PATH)/modpyb.c
   $(MICROPYTHON_PATH)/README.md
   $(MICROPYTHON_PATH)/py/mpstate.c
@@ -220,7 +217,7 @@
 	$(MICROPYTHON_PATH)/py/modmicropython.c
 	$(MICROPYTHON_PATH)/py/modstruct.c
 	$(MICROPYTHON_PATH)/py/modsys.c
-	$(MICROPYTHON_PATH)/py/moduerrno.c
+	$(MICROPYTHON_PATH)/py/moderrno.c
 	$(MICROPYTHON_PATH)/py/modthread.c
 	$(MICROPYTHON_PATH)/py/vm.c
 	$(MICROPYTHON_PATH)/py/bc.c
@@ -228,14 +225,14 @@
 	$(MICROPYTHON_PATH)/py/repl.c
 	$(MICROPYTHON_PATH)/py/smallint.c
 	$(MICROPYTHON_PATH)/py/frozenmod.c
-	$(MICROPYTHON_PATH)/lib/utils/printf.c
-	$(MICROPYTHON_PATH)/lib/timeutils/timeutils.c
-	$(MICROPYTHON_PATH)/lib/utils/sys_stdio_mphal.c
-	$(MICROPYTHON_PATH)/lib/utils/stdout_helpers.c
-	$(MICROPYTHON_PATH)/lib/utils/pyexec.c
-	$(MICROPYTHON_PATH)/lib/mp-readline/readline.c
-	$(MICROPYTHON_PATH)/lib/utils/interrupt_char.c
-	$(MICROPYTHON_PATH)/extmod/utime_mphal.c
+	$(MICROPYTHON_PATH)/shared/libc/printf.c
+	$(MICROPYTHON_PATH)/shared/timeutils/timeutils.c
+	$(MICROPYTHON_PATH)/shared/runtime/sys_stdio_mphal.c
+	$(MICROPYTHON_PATH)/shared/runtime/stdout_helpers.c
+	$(MICROPYTHON_PATH)/shared/runtime/pyexec.c
+	$(MICROPYTHON_PATH)/shared/readline/readline.c
+	$(MICROPYTHON_PATH)/shared/runtime/interrupt_char.c
+	$(MICROPYTHON_PATH)/extmod/modtime.c
 
 [Packages]
   MdePkg/MdePkg.dec
