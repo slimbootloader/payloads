@@ -37,10 +37,6 @@ gen_dir = os.path.realpath('../MicroPython/genhdr')
 if not os.path.exists(gen_dir):
     os.makedirs (gen_dir)
 
-# generate files
-with open(gen_dir + '/moduledefs.h', 'w') as fp:
-    cmd_list = [sys.executable, '../MicroPython/py/makemoduledefs.py', '--vpath', '../MicroPython']
-
 if os.name == 'posix':
     pp_cmd  = 'gcc'
 else:

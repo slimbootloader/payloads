@@ -30,8 +30,8 @@
 #include <string.h>
 #include "py/runtime.h"
 #include "py/mphal.h"
-#include "lib/utils/pyexec.h"
-#include "extmod/machine_mem.h"
+#include "shared/runtime/pyexec.h"
+#include "extmod/modmachine.h"
 #include "sblservice.h"
 
 STATIC mp_obj_t pyb_console_init(mp_obj_t icol, mp_obj_t irow) {
@@ -148,3 +148,5 @@ const mp_obj_module_t pyb_module = {
     .base = { &mp_type_module },
     .globals = (mp_obj_dict_t *)&pyb_module_globals,
 };
+
+MP_REGISTER_MODULE(MP_QSTR_pyb, pyb_module);
