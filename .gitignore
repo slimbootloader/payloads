@@ -1,0 +1,6 @@
+.*/
+*.log
+*.pyc
+/Build
+/Conf
+/slimbootloader
